@@ -96,9 +96,9 @@ alias cp="cp -i"
 alias ln="ln -i"
 
 # List files
-alias ls="ls --color=auto -F -a -b -T 0" # colorful ls
+alias ls="ls --color=auto -Fab" # colorful ls
 alias ll="ls --color=auto -lhA" # show hidden, long format, short unit suffix
-alias lsl="ls --color=auto -F -a -b -T 0 | less" # paginate results
+alias lsl="ls --color=auto -Fab | less" # paginate results
 alias lll="ls --color=auto -lhA | less" # paginate results (long list)
 alias lss="ls --color=auto -lSr" # sort by size
 
