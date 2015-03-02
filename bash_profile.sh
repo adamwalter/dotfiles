@@ -165,11 +165,14 @@ function version () {
     else
         if [ $1 = "apache" ]; then
             httpd -V
-        else if [ $1 = "os" ]; then
+        fi
+        if [ $1 = "os" ]; then
             gcc --version
-        else if [ $1 = "php" ]; then
+        fi
+        if [ $1 = "php" ]; then
             php -v
-        else if [ $1 = "mysql" ]; then
+        fi
+        if [ $1 = "mysql" ]; then
             mysql -V
         fi
     fi
@@ -181,4 +184,4 @@ function version () {
 
 alias editbash="nano ~/.bash_profile"
 alias sourcebash="source ~/.bash_profile"
-alias editbashrc"nano /etc/bashrc"
+alias editbashrc="nano /etc/bashrc"
