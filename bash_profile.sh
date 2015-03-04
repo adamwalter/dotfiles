@@ -44,6 +44,8 @@ function ip () {
     fi
 }
 
+alias myip="curl ipecho.net/plain;echo"
+
 # Extract any kind of archive
 function extract () {
     if [ -z "$1" ]; then
