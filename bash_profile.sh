@@ -207,6 +207,15 @@ function version () {
 #  MISCELLANEOUS
 # ##############################################################################
 
+# Create random password
+function newpass () {
+    if [ -z "$1" ]; then
+        echo "Usage: newpass <number of characters>"
+    else
+        cat /dev/urandom | strings | grep -o '[[:alnum:]]' | head -n $1 | tr -d '\n';echo
+    fi
+}
+
 alias editbash="nano ~/.bash_profile"
 alias sourcebash="source ~/.bash_profile"
 alias editbashrc="nano /etc/bashrc"
