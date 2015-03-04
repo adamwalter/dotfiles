@@ -4,8 +4,12 @@
 
 # Make directory then move into it
 function mcd () {
-    mkdir -p $3
-    cd $1
+    if [ -z "$1" ]; then
+        echo "Usage: mcd <directory name>"
+    else
+        mkdir -p $1
+        cd $1
+    fi
 }
 
 # Find and delete foreign system files
