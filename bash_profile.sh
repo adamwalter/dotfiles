@@ -21,13 +21,27 @@ function cleandir () {
 
 #  DNS, MX, and IP Lookups
 function dns () {
-    dig -t ANY $1
+    if [ -z "$1" ]; then
+        echo "Usage: dns <ip address>"
+    else
+        dig -t ANY $1
+    fi
 }
+
 function mx () {
-    dig mx +short $1
+    if [ -z "$1" ]; then
+        echo "Usage: mx <hostname>"
+    else
+        dig mx +short $1
+    fi
 }
+
 function ip () {
-    curl ipinfo.io/$1
+    if [ -z "$1" ]; then
+        echo "Usage: ip <ip address>"
+    else
+        curl ipinfo.io/$1
+    fi
 }
 
 # Extract any kind of archive
@@ -137,7 +151,11 @@ alias cd..="cd .."
 
 # Move up X directories
 function up () {
-    local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x;
+    if [ -z "$1" ]; then
+        echo "Usage: up <number of directories to move up>"
+    else
+        local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x;
+    fi
 }
 
 # ##############################################################################
@@ -165,13 +183,10 @@ alias gitcl="git clone"
 # Get software version/info
 function version () {
     if [ -z "$1" ]; then
-        echo "Usage: version <apache|os|php|mysql>"
+        echo "Usage: version <apache|php|mysql>"
     else
         if [ $1 = "apache" ]; then
             httpd -V
-        fi
-        if [ $1 = "os" ]; then
-            gcc --version
         fi
         if [ $1 = "php" ]; then
             php -v
