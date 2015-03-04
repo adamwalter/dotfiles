@@ -121,6 +121,7 @@ alias ll="ls --color=auto -lhA" # show hidden, long format, short unit suffix
 alias lsl="ls --color=auto -Fab | less" # paginate results
 alias lll="ls --color=auto -lhA | less" # paginate results (long list)
 alias lss="ls --color=auto -lSr" # sort by size
+alias lsp="stat -c '%A %a %G %U %n' *" # show full permission details
 
 # Ping 10 times by default
 alias ping="ping -c 10"
