@@ -183,6 +183,9 @@ alias gitcl="git clone"
 #  ENVIRONMENT
 # ##############################################################################
 
+# Get distribution/OS
+alias getos="grep -qs '' /etc/lsb-release && lsb_release -a | grep -v n/a | grep -v none; uname -rms"
+
 # Get software version/info
 function version () {
     if [ -z "$1" ]; then
