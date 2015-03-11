@@ -24,7 +24,8 @@ function dns () {
     if [ -z "$1" ]; then
         echo "Usage: dns <ip address>"
     else
-        dig -t ANY $1
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig -t ANY $url
     fi
 }
 
@@ -32,7 +33,8 @@ function mx () {
     if [ -z "$1" ]; then
         echo "Usage: mx <hostname>"
     else
-        dig mx +short $1
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig mx +short $url
     fi
 }
 
