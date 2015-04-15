@@ -6,8 +6,6 @@
 override_git_prompt_colors() {
     GIT_PROMPT_THEME_NAME="Adam"
 
-    DarkGrey="\[\e[1;30m\]"
-
     # Time12a="\$(date +%H:%M)"
     # PathShort="\w";
 
@@ -43,8 +41,8 @@ override_git_prompt_colors() {
     ## _LAST_COMMAND_INDICATOR_ will be replaced by the appropriate GIT_PROMPT_COMMAND_OK OR GIT_PROMPT_COMMAND_FAIL
     # GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${Yellow}${PathShort}${ResetColor}"
     # GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${GIT_PROMPT_START_USER}"
-    GIT_PROMPT_END_USER=" \n${DarkGrey}\u${ResetColor} $ "
-    GIT_PROMPT_END_ROOT=" \n${DarkGrey}\u${ResetColor} # "
+    GIT_PROMPT_END_USER=" \n\u $ "
+    GIT_PROMPT_END_ROOT=" \n\u # "
 
     ## Please do not add colors to these symbols
     # GIT_PROMPT_SYMBOLS_AHEAD="↑·"             # The symbol for "n versions ahead of origin"
