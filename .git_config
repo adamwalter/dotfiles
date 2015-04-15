@@ -6,12 +6,13 @@
     ignorecase = true
     pager = less -R
 [alias]
-    who = shortlog -s -n --no-merges
+    loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    pullsubs = submodule foreach git pull origin master
     standup = shortlog --since=yesterday
     today = shortlog --since=midnight
     uncommit = reset --soft HEAD^
     unamend = reset --soft HEAD@{1}
-    pullsubs = submodule foreach git pull origin master
+    who = shortlog -s -n --no-merges
 [push]
     default = simple
 [merge]
