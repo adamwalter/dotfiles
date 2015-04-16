@@ -11,7 +11,7 @@ override_git_prompt_colors() {
 
   # Custom variables
   local User="\u"
-  local Host="\h"
+  local Host="\H"
   local DirBase="\W"
 
   ## These are the color definitions used by gitprompt.sh
