@@ -1,0 +1,28 @@
+[core]
+    editor = nano
+    filemode = false
+[color]
+    ui = true
+[alias]
+    a = add
+    aa = add --all
+    b = branch
+    c = commit -v
+    ca = commit -v -a
+    cmsg = commit -m
+    co = checkout
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    l = pull
+    p = push
+    pullsubs = submodule foreach git pull origin master
+    st = status
+    today = shortlog --since=midnight
+    uncommit = reset --soft HEAD^
+    unamend = reset --soft HEAD@{1}
+    who = shortlog -s -n --no-merges
+    yesterday = shortlog --since=yesterday
+[branch "master"]
+    rebase = true
