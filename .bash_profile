@@ -115,12 +115,17 @@ alias cp="cp -i"
 alias ln="ln -i"
 
 # List files
-alias ls="ls --color=auto -Fab" # colorful ls
-alias ll="ls --color=auto -lhA" # show hidden, long format, short unit suffix
-alias lsl="ls --color=auto -Fab | less" # paginate results
-alias lll="ls --color=auto -lhA | less" # paginate results (long list)
-alias lss="ls --color=auto -lSr" # sort by size
-alias lsp="stat -c '%A %a %G %U %n' *" # show full permission details
+alias l='ls -lFh'
+alias lS='ls -1FSsh'
+alias la='ls -lAFh'
+alias lart='ls -1Fcart'
+alias ldot='ls -ld .*'
+alias ll='ls -l'
+alias lr='ls -tRFh'
+alias lrt='ls -1Fcrt'
+alias ls='ls -G'
+alias lsa='ls -lah'
+alias lt='ls -ltFh'
 
 # Ping 10 times by default
 alias ping="ping -c 10"
