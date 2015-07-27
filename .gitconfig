@@ -1,15 +1,20 @@
+[user]
+    name =
+    email =
 [core]
     editor = nano
+    excludesfile = ~/.gitignore
     filemode = false
+    ignorecase = true
+    pager = less -R
 [color]
     ui = true
 [alias]
     a = add
     aa = add --all
     b = branch
-    c = commit -v
-    ca = commit -v -a
-    cmsg = commit -m
+    c = commit -v -m
+    ca = commit -v -a -m
     co = checkout
     d = diff
     dc = diff --cached
@@ -18,7 +23,7 @@
     l = pull
     p = push
     pullsubs = submodule foreach git pull origin master
-    st = status
+    s = status
     today = shortlog --since=midnight
     uncommit = reset --soft HEAD^
     unamend = reset --soft HEAD@{1}
@@ -26,3 +31,9 @@
     yesterday = shortlog --since=yesterday
 [branch "master"]
     rebase = true
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
