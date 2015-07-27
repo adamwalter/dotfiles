@@ -126,6 +126,7 @@ alias lrt='ls -1Fcrt'
 alias ls='ls -G'
 alias lsa='ls -lah'
 alias lt='ls -ltFh'
+alias lsp="stat -c '%A %a %G %U %n' *" # show full permission details
 
 # Ping 10 times by default
 alias ping="ping -c 10"
