@@ -1,18 +1,17 @@
-export ZSH=/Users/vitaldesign/.oh-my-zsh
+export ZSH=/Users/Adam/.oh-my-zsh
 
-ZSH_THEME="custom"
+ZSH_THEME="adam"
 
-plugins=(common-aliases extract colored-man)
+plugins=(common-aliases git extract colored-man dircycle sublime urltools pj zsh-git-prompt)
 
-export PATH="/usr/local/var/rbenv/shims:/Applications/MAMP/Library/bin:/Applications/MAMP/bin/php/php5.4.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin"
+export PATH="/Applications/MAMP/bin/php/php5.5.18/bin:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 source $ZSH/oh-my-zsh.sh
-
 source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
 
-# ##############################################################################
-#  UTILITIES
-# ##############################################################################
+#######################################
+# UTILITIES
+#######################################
 
 # Make directory then move into it
 function mcd () {
@@ -60,9 +59,24 @@ function ip () {
 
 alias myip="curl ipecho.net/plain;echo"
 
-# ##############################################################################
-#  DEFAULT EDITOR
-# ##############################################################################
+#######################################
+# ALIASES
+#######################################
+
+alias edit="nano"
+alias ll="ls -alh"
+alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade; brew cleanup;"
+
+#######################################
+# PLUGIN SETTINGS
+#######################################
+
+# pj
+PROJECT_PATHS=(~/Sites ~/Dropbox/Github)
+
+#######################################
+# DEFAULT EDITOR
+#######################################
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nano'
