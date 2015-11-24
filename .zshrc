@@ -63,6 +63,7 @@ alias myip="curl ipecho.net/plain;echo"
 # ALIASES
 #######################################
 
+alias edithosts="subl /private/etc/hosts"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 alias edit="nano"
 alias ll="ls -alh"
