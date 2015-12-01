@@ -30,33 +30,6 @@ function cleandir () {
     find . -type d -name ".AppleDouble" -print0 | xargs -rt0 rm -rv
 }
 
-#  DNS, MX, and IP Lookups
-function dns () {
-    if [ -z "$1" ]; then
-        echo "Usage: dns <ip address>"
-    else
-        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
-        dig -t ANY $url
-    fi
-}
-
-function mx () {
-    if [ -z "$1" ]; then
-        echo "Usage: mx <hostname>"
-    else
-        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
-        dig mx +short $url
-    fi
-}
-
-function ip () {
-    if [ -z "$1" ]; then
-        echo "Usage: ip <ip address>"
-    else
-        curl ipinfo.io/$1
-    fi
-}
-
 alias myip="curl ipecho.net/plain;echo"
 
 #######################################
