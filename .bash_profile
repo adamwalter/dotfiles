@@ -69,6 +69,7 @@ export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
 
 # If installed from Github:
 #source ~/.bash-git-prompt/gitprompt.sh
+#GIT_PROMPT_THEME_NAME="Adam"
 
 # If installed via Homebrew (Mac):
 #if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
