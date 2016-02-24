@@ -153,7 +153,8 @@ function newpass () {
 }
 
 alias edithosts="subl /private/etc/hosts"
+alias editssh="subl ~/.ssh/config"
+alias editknown="subl ~/.ssh/known_hosts"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
-alias editbash="nano ~/.bash_profile"
-alias sourcebash="source ~/.bash_profile"
-alias editbashrc="nano /etc/bashrc"
+alias editbash="subl ~/.zshrc”
+alias sourcebash="source ~/.zshrc"
