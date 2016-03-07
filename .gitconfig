@@ -1,39 +1,62 @@
+[alias]
+    c = commit -am
+    s = status -sb
+    co = checkout
+    df = diff --color --color-words --abbrev
+    dt = difftool
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    uncommit = reset --soft HEAD^
+    unamend = reset --soft HEAD@{1}
+
+    # diff-so-fancy
+    dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+
+[color]
+    ui = always
+
+[color "diff"]
+    meta = yellow bold
+    commit = green bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[core]
+    editor = nano
+    excludesfile = ~/.gitignore_global
+    filemode = false
+    ignorecase = true
+    pager = diff-highlight | diff-so-fancy | less -r
+
+[diff]
+    tool = bc3
+
+[merge]
+    tool = bc3
+
+[mergetool]
+    bc3 = trustExitCode
+
+[push]
+    default = simple
+
 [user]
     name =
     email =
-[core]
-    editor = nano
-    excludesfile = ~/.gitignore
-    filemode = false
-    ignorecase = true
-    pager = less -R
-[color]
-    ui = true
-[alias]
-    a = add
-    aa = add --all
-    b = branch
-    c = commit -v -m
-    ca = commit -v -a -m
-    co = checkout
-    d = diff
-    dc = diff --cached
-    dt = difftool
-    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-    l = pull
-    p = push
-    pullsubs = submodule foreach git pull origin master
-    s = status
-    today = shortlog --since=midnight
-    uncommit = reset --soft HEAD^
-    unamend = reset --soft HEAD@{1}
-    who = shortlog -s -n --no-merges
-    yesterday = shortlog --since=yesterday
-[branch "master"]
-    rebase = true
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
-[mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
