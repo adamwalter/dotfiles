@@ -1,10 +1,10 @@
 export ZSH=/Users/Adam/.oh-my-zsh
 
-ZSH_THEME="adam"
+ZSH_THEME="custom"
 
 plugins=(common-aliases git extract colored-man dircycle sublime urltools pj zsh-git-prompt)
 
-export PATH="/Applications/MAMP/bin/php/php5.5.18/bin:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH="/Applications/MAMP/bin/php/php5.6.10/bin:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
@@ -30,20 +30,74 @@ function cleandir () {
     find . -type d -name ".AppleDouble" -print0 | xargs -rt0 rm -rv
 }
 
+# Create random password
+function newpass () {
+    if [ -z "$1" ]; then
+        echo "Usage: newpass <number of characters>"
+    else
+        cat /dev/urandom | strings | grep -o '[[:alnum:]]' | head -n $1 | tr -d '\n';echo
+    fi
+}
+
+# Move up X directories
+function up () {
+    if [ -z "$1" ]; then
+        echo "Usage: up <number of directories to move up>"
+    else
+        local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x;
+    fi
+}
+
+#  DNS lookup
+function dns () {
+    if [ -z "$1" ]; then
+        echo "Usage: dns <ip address>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig -t ANY $url
+    fi
+}
+
+# MX lookup
+function mx () {
+    if [ -z "$1" ]; then
+        echo "Usage: mx <hostname>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig mx +short $url
+    fi
+}
+
+# IP location lookup
+function ip () {
+    if [ -z "$1" ]; then
+        echo "Usage: ip <ip address>"
+    else
+        curl ipinfo.io/$1
+    fi
+}
+
+# Get machine IP
 alias myip="curl ipecho.net/plain;echo"
 
 #######################################
 # ALIASES
 #######################################
 
+alias c="clear"
+alias ll="ls -alh"
+alias edit="subl"
 alias edithosts="subl /private/etc/hosts"
 alias editssh="subl ~/.ssh/config"
 alias editknown="subl ~/.ssh/known_hosts"
 alias editbash="subl ~/.zshrc="
 alias sourcebash="source ~/.zshrc"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
-alias edit="subl"
-alias ll="ls -alh"
+
+# Ping 10 times by default
+alias ping="ping -c 10"
+
+# Update NPM, Homebrew, and all packages
 alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;"
 
 #######################################
@@ -52,13 +106,3 @@ alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; 
 
 # pj
 PROJECT_PATHS=(~/Sites ~/Dropbox/Github)
-
-#######################################
-# DEFAULT EDITOR
-#######################################
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'
-else
-  export EDITOR='nano'
-fi

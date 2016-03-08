@@ -16,10 +16,7 @@ function mcd () {
 function cleandir () {
     find . -name "*.DS_Store" -type f -delete -print
     find . -type d -name "__MACOSX" -print0 | xargs -rt0 rm -rv
-    find . -type d -name ".AppleDouble" -print0 | xargs -rt0 rm -rv
 }
-
-alias myip="curl ipecho.net/plain;echo"
 
 # Extract any kind of archive
 function extract () {
@@ -68,14 +65,8 @@ export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
 # ##############################################################################
 
 # If installed from Github:
-#source ~/.bash-git-prompt/gitprompt.sh
-#GIT_PROMPT_THEME_NAME="Adam"
-
-# If installed via Homebrew (Mac):
-#if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-#    GIT_PROMPT_THEME_NAME="Adam"
-#    source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-#fi
+source ~/.bash-git-prompt/gitprompt.sh
+GIT_PROMPT_THEME_NAME="Custom"
 
 # ##############################################################################
 #  COMMAND DEFAULTS
@@ -121,6 +112,8 @@ alias pscpu="ps auxf | sort -nr -k 3 | head -10"
 alias psmem="ps auxf | sort -nr -k 4 | head -10"
 alias wget="wget -c"
 
+# Get machine IP
+alias myip="curl ipecho.net/plain;echo"
 
 # ##############################################################################
 #  DIRECTORY BROWSING
@@ -152,9 +145,8 @@ function newpass () {
     fi
 }
 
-alias edithosts="subl /private/etc/hosts"
-alias editssh="subl ~/.ssh/config"
-alias editknown="subl ~/.ssh/known_hosts"
-alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
-alias editbash="subl ~/.zshrc”
-alias sourcebash="source ~/.zshrc"
+alias editssh="nano ~/.ssh/config"
+alias editknown="nano ~/.ssh/known_hosts"
+alias copykey="cat ~/.ssh/id_rsa.pub"
+alias editbash="nano ~/.bash_profile"
+alias sourcebash="source ~/.bash_profile"

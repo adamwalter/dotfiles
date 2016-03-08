@@ -3,7 +3,7 @@
 # These are the defaults from the "Default" theme
 # You just need to override what you want to have changed
 override_git_prompt_colors() {
-  GIT_PROMPT_THEME_NAME="Adam"
+  GIT_PROMPT_THEME_NAME="Custom"
 
   # Custom Colors
   local Orange="\[\e[38;5;202m\]"
