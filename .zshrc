@@ -39,10 +39,10 @@ alias myip="curl ipecho.net/plain;echo"
 alias edithosts="subl /private/etc/hosts"
 alias editssh="subl ~/.ssh/config"
 alias editknown="subl ~/.ssh/known_hosts"
-alias editbash="subl ~/.zshrc”
+alias editbash="subl ~/.zshrc="
 alias sourcebash="source ~/.zshrc"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
-alias edit=“subl”
+alias edit="subl"
 alias ll="ls -alh"
 alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;"
 
