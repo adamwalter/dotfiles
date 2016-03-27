@@ -90,7 +90,7 @@ alias edit="subl"
 alias edithosts="subl /private/etc/hosts"
 alias editssh="subl ~/.ssh/config"
 alias editknown="subl ~/.ssh/known_hosts"
-alias editbash="subl ~/.zshrc="
+alias editbash="subl ~/.zshrc"
 alias sourcebash="source ~/.zshrc"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 
