@@ -2,7 +2,7 @@ export ZSH=/Users/Adam/.oh-my-zsh
 
 ZSH_THEME="custom"
 
-plugins=(common-aliases git extract colored-man dircycle sublime urltools pj zsh-git-prompt)
+plugins=(common-aliases git extract colored-man dircycle urltools pj zsh-git-prompt)
 
 export PATH="/Applications/MAMP/bin/php/php5.6.10/bin:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 

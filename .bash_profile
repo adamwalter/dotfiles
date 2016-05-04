@@ -16,37 +16,82 @@ function mcd () {
 function cleandir () {
     find . -name "*.DS_Store" -type f -delete -print
     find . -type d -name "__MACOSX" -print0 | xargs -rt0 rm -rv
+    find . -type d -name ".AppleDouble" -print0 | xargs -rt0 rm -rv
 }
 
-# Extract any kind of archive
-function extract () {
+# Create random password
+function newpass () {
     if [ -z "$1" ]; then
-        echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+        echo "Usage: newpass <number of characters>"
     else
-        if [ -f $1 ] ; then
-            case $1 in
-              *.tar.bz2)   tar xvjf ../$1    ;;
-              *.tar.gz)    tar xvzf ../$1    ;;
-              *.tar.xz)    tar xvJf ../$1    ;;
-              *.lzma)      unlzma ../$1      ;;
-              *.bz2)       bunzip2 ../$1     ;;
-              *.rar)       unrar x -ad ../$1 ;;
-              *.gz)        gunzip ../$1      ;;
-              *.tar)       tar xvf ../$1     ;;
-              *.tbz2)      tar xvjf ../$1    ;;
-              *.tgz)       tar xvzf ../$1    ;;
-              *.zip)       unzip ../$1       ;;
-              *.Z)         uncompress ../$1  ;;
-              *.7z)        7z x ../$1        ;;
-              *.xz)        unxz ../$1        ;;
-              *.exe)       cabextract ../$1  ;;
-              *)           echo "extract: '$1' - unknown archive method" ;;
-            esac
-        else
-            echo "$1 - file does not exist"
-        fi
+        cat /dev/urandom | strings | grep -o '[[:alnum:]]' | head -n $1 | tr -d '\n';echo
     fi
 }
+
+# Move up to a certain directory
+# https://github.com/driv/upto
+function upto() {
+	local EXPRESSION="$1"
+	if [ -z "$EXPRESSION" ]; then
+		echo "A folder expression must be provided." >&2
+		return 1
+	fi
+	if [ "$EXPRESSION" = "/" ]; then
+		cd "/"
+		return 0
+	fi
+	local CURRENT_FOLDER="$(pwd)"
+	local MATCHED_DIR=""
+	local MATCHING=true
+
+	while [ "$MATCHING" = true ]; do
+		if [[ "$CURRENT_FOLDER" =~ "$EXPRESSION" ]]; then
+			MATCHED_DIR="$CURRENT_FOLDER"
+			CURRENT_FOLDER=$(dirname "$CURRENT_FOLDER")
+		else
+			MATCHING=false
+		fi
+	done
+	if [ -n "$MATCHED_DIR" ]; then
+		cd "$MATCHED_DIR"
+		return 0
+	else
+		echo "No Match." >&2
+		return 1
+	fi
+}
+
+#  DNS lookup
+function dns () {
+    if [ -z "$1" ]; then
+        echo "Usage: dns <ip address>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig -t ANY $url
+    fi
+}
+
+# MX lookup
+function mx () {
+    if [ -z "$1" ]; then
+        echo "Usage: mx <hostname>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig mx +short $url
+    fi
+}
+
+# IP location lookup
+function ip () {
+    if [ -z "$1" ]; then
+        echo "Usage: ip <ip address>"
+    else
+        curl ipinfo.io/$1
+    fi
+}
+
+# Get machine IP
+alias myip="curl ipecho.net/plain;echo"
 
 # ##############################################################################
 #  EXPORTS
@@ -115,36 +160,7 @@ alias wget="wget -c"
 # Get machine IP
 alias myip="curl ipecho.net/plain;echo"
 
-# ##############################################################################
-#  DIRECTORY BROWSING
-# ##############################################################################
-
-alias back="cd -"
-alias ..="cd .."
-alias cd..="cd .."
-
-# Move up X directories
-function up () {
-    if [ -z "$1" ]; then
-        echo "Usage: up <number of directories to move up>"
-    else
-        local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x;
-    fi
-}
-
-# ##############################################################################
-#  MISCELLANEOUS
-# ##############################################################################
-
-# Create random password
-function newpass () {
-    if [ -z "$1" ]; then
-        echo "Usage: newpass <number of characters>"
-    else
-        cat /dev/urandom | strings | grep -o '[[:alnum:]]' | head -n $1 | tr -d '\n';echo
-    fi
-}
-
+# Common files
 alias editssh="nano ~/.ssh/config"
 alias editknown="nano ~/.ssh/known_hosts"
 alias copykey="cat ~/.ssh/id_rsa.pub"
