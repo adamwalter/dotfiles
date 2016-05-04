@@ -1,10 +1,14 @@
+[user]
+    name =
+    email =
+
 [alias]
     c = commit -am
     s = status -sb
     co = checkout
     df = diff --color --color-words --abbrev
     dt = difftool
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
     uncommit = reset --soft HEAD^
     unamend = reset --soft HEAD@{1}
 
@@ -45,18 +49,12 @@
     ignorecase = true
     pager = diff-highlight | diff-so-fancy | less -r
 
-[diff]
-    tool = bc3
-
-[merge]
-    tool = bc3
-
-[mergetool]
-    bc3 = trustExitCode
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [push]
     default = simple
-
-[user]
-    name =
-    email =
