@@ -97,8 +97,8 @@ alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 # Ping 10 times by default
 alias ping="ping -c 10"
 
-# Update NPM, Homebrew, and all packages
-alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;"
+# Update all the things
+alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;sudo gem update `gem list | cut -d ' ' -f 1`;apm upgrade;"
 
 #######################################
 # PLUGIN SETTINGS
