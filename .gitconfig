@@ -13,6 +13,9 @@
     unamend = reset --soft HEAD@{1}
     unfuck = reset --hard
 
+    # Search commit messages
+    search = "!sh -c \"git lg | grep --color $1\" -"
+
     # Add WP Engine remotes (pass install name)
     wpe = "!sh -c \"git remote add production git@git.wpengine.com:production/$1.git; git remote add staging git@git.wpengine.com:staging/$1.git;git remote -v;\" -"
 
