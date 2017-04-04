@@ -1,10 +1,10 @@
-export ZSH=/Users/Adam/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="custom"
 
 plugins=(common-aliases git extract colored-man dircycle urltools pj zsh-git-prompt)
 
-export PATH="/Applications/MAMP/bin/php/php5.6.10/bin:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH="/Applications/MAMP/bin/php/php5.6.30/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
@@ -106,4 +106,4 @@ alias updategems="sudo gem update `gem list | cut -d ' ' -f 1`"
 #######################################
 
 # pj
-PROJECT_PATHS=(~/Sites ~/Dropbox/Github)
+PROJECT_PATHS=(~/Sites ~/Dropbox/Git)

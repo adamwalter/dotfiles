@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Theme requires zsh-git-prompt plugin
 # https://github.com/olivierverdier/zsh-git-prompt
 
