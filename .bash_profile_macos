@@ -89,6 +89,35 @@ function upto() {
 	fi
 }
 
+#  DNS lookup
+function dns () {
+    if [ -z "$1" ]; then
+        echo "Usage: dns <ip address>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig -t ANY $url
+    fi
+}
+
+# MX lookup
+function mx () {
+    if [ -z "$1" ]; then
+        echo "Usage: mx <hostname>"
+    else
+        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig mx +short $url
+    fi
+}
+
+# IP location lookup
+function ip () {
+    if [ -z "$1" ]; then
+        echo "Usage: ip <ip address>"
+    else
+        curl ipinfo.io/$1
+    fi
+}
+
 # ##############################################################################
 #  COMMAND DEFAULTS
 # ##############################################################################
@@ -119,7 +148,7 @@ alias ping="ping -c 10"
 
 # Default editor
 alias nano="nano -w -z"
-alias edit="nano -w -z"
+alias edit="atom"
 
 # Search history
 alias histg="history | grep $1"
@@ -137,8 +166,13 @@ alias wget="wget -c"
 alias myip="curl ipecho.net/plain;echo"
 
 # Miscellany
-alias editssh="nano ~/.ssh/config"
-alias editknown="nano ~/.ssh/known_hosts"
-alias copykey="cat ~/.ssh/id_rsa.pub"
-alias editbash="nano ~/.bash_profile"
+alias edithosts="atom /private/etc/hosts"
+alias editssh="atom ~/.ssh/config"
+alias editknown="atom ~/.ssh/known_hosts"
+alias editbash="atom ~/.bash_profile"
 alias sourcebash="source ~/.bash_profile"
+alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
+
+# Update NPM, Homebrew, and all packages
+alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;wp package update;apm upgrade;"
+alias updategems="sudo gem update `gem list | cut -d ' ' -f 1`"
