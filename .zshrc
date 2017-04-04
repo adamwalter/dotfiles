@@ -84,13 +84,14 @@ alias myip="curl ipecho.net/plain;echo"
 # ALIASES
 #######################################
 
-alias c="clear"
-alias ll="ls -alh"
-alias edit="subl"
-alias edithosts="subl /private/etc/hosts"
-alias editssh="subl ~/.ssh/config"
-alias editknown="subl ~/.ssh/known_hosts"
-alias editbash="subl ~/.zshrc"
+# Default editor
+alias nano="nano -w -z"
+alias edit="atom"
+
+alias edithosts="edit /private/etc/hosts"
+alias editssh="edit ~/.ssh/config"
+alias editknown="edit ~/.ssh/known_hosts"
+alias editbash="edit ~/.zshrc"
 alias sourcebash="source ~/.zshrc"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 
