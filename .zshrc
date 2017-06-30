@@ -102,6 +102,12 @@ alias ping="ping -c 10"
 alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;wp package update;apm upgrade;"
 alias updategems="sudo gem update `gem list | cut -d ' ' -f 1`"
 
+# WP-CLI
+# Install plugin
+alias wppi="wp plugin install --activate"
+# Uninstall plugin
+alias wppu="wp plugin uninstall --deactivate"
+
 #######################################
 # PLUGIN SETTINGS
 #######################################

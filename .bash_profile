@@ -142,3 +142,9 @@ alias editknown="nano ~/.ssh/known_hosts"
 alias copykey="cat ~/.ssh/id_rsa.pub"
 alias editbash="nano ~/.bash_profile"
 alias sourcebash="source ~/.bash_profile"
+
+# WP-CLI
+# Install plugin
+alias wppi="wp plugin install --activate"
+# Uninstall plugin
+alias wppu="wp plugin uninstall --deactivate"
