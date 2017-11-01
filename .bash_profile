@@ -24,7 +24,7 @@ export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
 #fi
 
 # Theme name
-#GIT_PROMPT_THEME_NAME="Custom"
+#GIT_PROMPT_THEME="Custom"
 
 # ##############################################################################
 #  UTILITIES
