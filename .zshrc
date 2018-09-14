@@ -77,6 +77,16 @@ function ip () {
     fi
 }
 
+# Hosting lookup
+function lookup () {
+    IP=`dig $1 +noall +answer +nocomments +short | tail -n 1`
+    declare -A arr=();
+    while read -r a b;
+            do arr[$a]=$b;
+    done < <(whois -h whois.arin.net $IP | grep -E "OrgName:|NetRange:|NetName:|Comment:|City:|StateProv:")
+    echo -e "URL: $1\nIP: $IP\nOrganization: ${arr[OrgName:]}\nNet Name: ${arr[NetName:]}\nIP Range: ${arr[NetRange:]}\nLocation: ${arr[City:]}, ${arr[StateProv:]}"
+}
+
 # Get machine IP
 alias myip="curl ipecho.net/plain;echo"
 
