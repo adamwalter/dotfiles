@@ -118,6 +118,9 @@ alias wppi="wp plugin install --activate"
 # Uninstall plugin
 alias wppu="wp plugin uninstall --deactivate"
 
+# WordPress
+alias taildebug="tail -f wp-content/debug.log"
+
 #######################################
 # PLUGIN SETTINGS
 #######################################
