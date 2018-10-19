@@ -7,7 +7,9 @@ plugins=(common-aliases git extract colored-man dircycle urltools pj zsh-git-pro
 export PATH="/Applications/MAMP/bin/php/php5.6.30/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
+source "$ZSH/custom/plugins/zsh-git-prompt/zshrc.sh"
+PROMPT='%{$FG[220]%}%c %{$reset_color%}$(git_super_status)%{$reset_color%} $ '
+ZSH_GIT_PROMPT_SHOW_UPSTREAM=1
 
 #######################################
 # UTILITIES
