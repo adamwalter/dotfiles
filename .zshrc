@@ -96,7 +96,7 @@ alias myip="curl ipecho.net/plain;echo"
 
 # Default editor
 alias nano="nano -w -z"
-alias edit="atom"
+alias edit="code"
 
 alias edithosts="edit /private/etc/hosts"
 alias editssh="edit ~/.ssh/config"

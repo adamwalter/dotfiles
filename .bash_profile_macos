@@ -148,7 +148,7 @@ alias ping="ping -c 10"
 
 # Default editor
 alias nano="nano -w -z"
-alias edit="atom"
+alias edit="code"
 
 # Search history
 alias histg="history | grep $1"
@@ -166,10 +166,10 @@ alias wget="wget -c"
 alias myip="curl ipecho.net/plain;echo"
 
 # Miscellany
-alias edithosts="atom /private/etc/hosts"
-alias editssh="atom ~/.ssh/config"
-alias editknown="atom ~/.ssh/known_hosts"
-alias editbash="atom ~/.bash_profile"
+alias edithosts="edit /private/etc/hosts"
+alias editssh="edit ~/.ssh/config"
+alias editknown="edit ~/.ssh/known_hosts"
+alias editbash="edit ~/.bash_profile"
 alias sourcebash="source ~/.bash_profile"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 
