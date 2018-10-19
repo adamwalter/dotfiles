@@ -126,4 +126,4 @@ alias taildebug="tail -f wp-content/debug.log"
 #######################################
 
 # pj
-PROJECT_PATHS=(~/Sites ~/Dropbox/Git)
+PROJECT_PATHS=(~/Sites ~/Documents/Code)
