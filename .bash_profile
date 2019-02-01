@@ -153,3 +153,4 @@ alias wppu="wp plugin uninstall --deactivate"
 alias taildebug="clear;tail -f wp-content/debug.log;"
 alias cleardebug=": > wp-content/debug.log"
 alias json2php='php -r '"'"'echo var_export(json_decode(file_get_contents($argv[1]), true));'"'"''
+alias svgowxml="svgo --disable=removeXMLProcInst"
