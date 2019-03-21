@@ -22,8 +22,8 @@
     # Undo last commit amend
     unamend = reset --soft HEAD@{1}
 
-    # Reset to commit and discard all changes
-    unfuck = reset --hard
+    # Reset to last commit, discarding all changes
+    discard = reset --hard
 
     # Remove from tracking
     untrack = rm --cached
