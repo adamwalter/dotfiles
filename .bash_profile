@@ -6,7 +6,7 @@ export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
 export HISTFILESIZE=10000
 export HISTSIZE=1000
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
 
 # ##############################################################################
