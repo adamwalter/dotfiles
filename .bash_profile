@@ -4,7 +4,7 @@
 
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
-export HISTFILESIZE=10000
+export HISTFILESIZE=2000
 export HISTSIZE=1000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
