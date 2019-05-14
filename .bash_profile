@@ -140,7 +140,8 @@ alias wget="wget -c"
 # Get machine IP
 alias myip="curl ipecho.net/plain;echo"
 
-# Miscellany
+# Edit files
+alias edithosts="edit /private/etc/hosts"
 alias editssh="nano ~/.ssh/config"
 alias editknown="nano ~/.ssh/known_hosts"
 alias copykey="cat ~/.ssh/id_rsa.pub"
@@ -158,3 +159,11 @@ alias taildebug="clear;tail -f wp-content/debug.log;"
 alias cleardebug=": > wp-content/debug.log"
 alias json2php='php -r '"'"'echo var_export(json_decode(file_get_contents($argv[1]), true));'"'"''
 alias svgowxml="svgo --disable=removeXMLProcInst"
+
+# ###########
+# macOS Only
+# ###########
+
+# Update NPM, Homebrew, and all packages
+alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;wp package update;apm upgrade;"
+alias updategems="sudo gem update `gem list | cut -d ' ' -f 1`"
