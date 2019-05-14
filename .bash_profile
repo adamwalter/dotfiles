@@ -4,7 +4,6 @@
 
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
-export GREP_OPTIONS='--color=auto'
 export HISTFILESIZE=10000
 export HISTSIZE=1000
 export HISTCONTROL=ignoredups
@@ -113,6 +112,11 @@ alias ls='ls -G'
 alias lsa='ls -lah'
 alias lt='ls -ltFh'
 alias lsp="stat -c '%A %a %G %U %n' *" # show full permission details
+
+# grep
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
 
 # Ping 10 times by default
 alias ping="ping -c 10"
