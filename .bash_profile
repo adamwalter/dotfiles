@@ -1,13 +1,22 @@
-# ##############################################################################
-#  EXPORTS
-# ##############################################################################
-
+# Enable color output in macOS Terminal
 export CLICOLOR=1
-export LSCOLORS=exfxcxdxbxegedabagacad
-export HISTFILESIZE=2000
-export HISTSIZE=1000
+
+# History settings
 export HISTCONTROL=ignoreboth
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 export HISTIGNORE="clear:ls:exit:ll:cd:cd .."
+
+# Set nano as default text editor
+export EDITOR=nano
+export VISUAL=nano
+export SVN_EDITOR="$VISUAL"
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Check the window size after each command and update LINES and COLUMNS
+shopt -s checkwinsize
 
 # ##############################################################################
 #  GIT PROMPT - https://github.com/magicmonty/bash-git-prompt
@@ -37,13 +46,6 @@ function mcd () {
         mkdir -p $1
         cd $1
     fi
-}
-
-# Find and delete foreign system files
-function cleandir () {
-    find . -name "*.DS_Store" -type f -delete -print
-    find . -type d -name "__MACOSX" -print0 | xargs -rt0 rm -rv
-    find . -type d -name ".AppleDouble" -print0 | xargs -rt0 rm -rv
 }
 
 # Create random password
