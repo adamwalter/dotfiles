@@ -142,6 +142,16 @@ function wp-update-core() {
     git commit -m "Updates WordPress from $PREVIOUS to $UPDATED"
 }
 
+# WP Engine SSH shortcut
+function sshwpe() {
+    if [ -z "$1" ]; then
+        echo "Usage: sshwpe <install name>"
+    else
+        HOSTNAME="$1.ssh.wpengine.net"
+        ssh $1@$HOSTNAME
+    fi
+}
+
 #######################################
 # ALIASES
 #######################################
