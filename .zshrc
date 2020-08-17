@@ -171,7 +171,7 @@ alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 alias ping="ping -c 10"
 
 # Update all the things
-alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade --all; brew cleanup;wp cli update;wp package update;apm upgrade;"
+alias updateall="sudo npm cache clean -f; sudo npm install -g n; sudo n stable; sudo npm install npm -g; brew update; brew upgrade; brew cleanup;wp cli update;wp package update;"
 alias updategems="sudo gem update `gem list | cut -d ' ' -f 1`"
 
 # WP-CLI
