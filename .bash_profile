@@ -173,6 +173,41 @@ function sshwpe() {
     fi
 }
 
+# Generate dummy WordPress posts
+function wp-generate-posts() {
+    if ! $(wp core is-installed); then
+        return 1
+    fi
+
+    if [ -z "$1" ]; then
+        echo "Usage: wp-generate-posts <user id> <number of posts> <post type>. If post type is left blank, command defaults to 'post'."
+        return 1
+    fi
+
+    # Set author ID to 2 unless first paramter was passed.
+    AUTHOR=${1:-2}
+    # Set number of posts at 10 unless second parameter was passed.
+    NUM=${2:-10}
+    # Set post type to 'post' unless third parameter was passed.
+    POST_TYPE=${3:-post}
+
+    # Get an FPO image.
+    ATTACHMENT_ID=$(wp media import "https://via.placeholder.com/800x600.png?text=FPO" --title=FPO --alt="FPO Image" --porcelain)
+
+    # Create the posts.
+    for n in {1..$NUM}
+    do
+        # Get very short paragraph as title.
+        TITLE_RAW=$(curl http://loripsum.net/api/1/plaintext/veryshort/prude/)
+        # Snip off trailing period.
+        TITLE=${TITLE_RAW%?}
+        # Generate the post while passing in 6 paragraphs as the_content.
+        POST_ID=$(curl "http://loripsum.net/api/6/prude/headers/decorate/link/ul/" | wp post generate --post_content --count=1 --post_type=$POST_TYPE --post_title=$TITLE --post_author=$AUTHOR --format=ids)
+        # Attach the FPO featured image.
+        wp post meta add $POST_ID _thumbnail_id $ATTACHMENT_ID
+    done
+}
+
 # ##############################################################################
 #  COMMAND DEFAULTS
 # ##############################################################################
