@@ -227,6 +227,7 @@ function wp-generate-resources() {
     # Get FPO images.
     HERO_IMAGE=$(wp media import "https://via.placeholder.com/300x400.png?text=FPO" --title=FPO --alt="FPO Image" --porcelain)
     HERO_BG=$(wp media import "https://via.placeholder.com/2000x700.png?text=FPO" --title=FPO --alt="FPO Image" --porcelain)
+    THUMBNAIL=$(wp media import "https://via.placeholder.com/570x330.png?text=FPO" --title=FPO --alt="FPO Image" --porcelain)
 
     # Create the posts.
     for n in {1..$NUM}
@@ -246,6 +247,7 @@ function wp-generate-resources() {
         POST_ID=$(wp post generate --count=1 --post_type=resource --post_title=$TITLE --post_author=$AUTHOR --format=ids)
 
         # Add meta options
+        wp post meta add $POST_ID _thumbnail_id "$THUMBNAIL"
         wp post meta add $POST_ID gated_resource "0"
         wp post meta add $POST_ID _gated_resource "field_cpt_resource_gated"
         wp post meta add $POST_ID hero_bg "$HERO_BG"
