@@ -89,6 +89,15 @@ function lookup () {
     echo -e "URL: $1\nIP: $IP\nOrganization: ${arr[OrgName:]}\nNet Name: ${arr[NetName:]}\nIP Range: ${arr[NetRange:]}\nLocation: ${arr[City:]}, ${arr[StateProv:]}"
 }
 
+# Domain HTTPS certificate lookup
+function getssl() {
+    if [ -z "$1" ]; then
+        echo "Usage: getssl <hostname>"
+    else
+        openssl s_client -showcerts -connect $1:443 </dev/null | openssl x509 -noout  -dates
+    fi
+}
+
 # Get machine IP
 alias myip="curl ipecho.net/plain;echo"
 
