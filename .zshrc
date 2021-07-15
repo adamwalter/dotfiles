@@ -294,6 +294,9 @@ alias cleardebug=": > wp-content/debug.log"
 alias json2php='php -r '"'"'echo var_export(json_decode(file_get_contents($argv[1]), true));'"'"''
 alias svgowxml="svgo --disable=removeXMLProcInst"
 
+# Version Control
+alias svndiff='svn diff --diff-cmd colordiff -x "-u -w -p" "$@" | less -R'
+
 #######################################
 # PLUGIN SETTINGS
 #######################################
