@@ -4,7 +4,11 @@ ZSH_THEME="custom"
 
 plugins=(common-aliases git extract colored-man-pages dircycle urltools pj zsh-git-prompt)
 
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+# Use MAMP version of PHP & other PHP tuning
+PHP_VERSION=`ls /Applications/MAMP/bin/php/ | sort -n | tail -2 | head -1`
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH=$PATH:/Applications/MAMP/bin/php/${PHP_VERSION}/bin
+alias php='/Applications/MAMP/bin/php/${PHP_VERSION}/bin/php'
 
 source $ZSH/oh-my-zsh.sh
 source "$ZSH/custom/plugins/zsh-git-prompt/zshrc.sh"
