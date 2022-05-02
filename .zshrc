@@ -44,7 +44,7 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 # pj
-PROJECT_PATHS=(~/Sites ~/Documents/Code)
+PROJECT_PATHS=(~/Sites ~/Code)
 
 #######################################
 # UTILITY FUNCTIONS
