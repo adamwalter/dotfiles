@@ -38,13 +38,29 @@ source $ZSH/oh-my-zsh.sh
 
 # Pure prompt
 # https://github.com/sindresorhus/pure
+# Might need to use manual install steps
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=60
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 # pj
-PROJECT_PATHS=(~/Sites ~/Code)
+PROJECT_PATHS=(~/Sites ~/Projects)
+
+#######################################
+# NVM
+#######################################
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#######################################
+# Ruby / rbenv
+#######################################
+
+eval "$(rbenv init - zsh)"
 
 #######################################
 # UTILITY FUNCTIONS
