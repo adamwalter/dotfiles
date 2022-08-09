@@ -232,7 +232,7 @@ alias edithosts="edit /private/etc/hosts"
 alias editssh="edit ~/.ssh/config"
 alias editknown="edit ~/.ssh/known_hosts"
 alias editbash="edit ~/.zshrc"
-alias sourcebash="source ~/.zshrc"
+alias reload="exec zsh"
 alias copykey="pbcopy < ~/.ssh/id_rsa.pub"
 
 # Search history
