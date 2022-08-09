@@ -38,8 +38,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Pure prompt
 # https://github.com/sindresorhus/pure
-# Might need to use manual install steps
-fpath+=($HOME/.zsh/pure)
+# Use manual install steps and clone to OMZ plugin dir
+fpath+=($HOME/.oh-my-zsh/custom/plugins/pure)
 autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=60
 zstyle :prompt:pure:git:stash show yes
