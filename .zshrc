@@ -2,10 +2,10 @@
 # SETUP
 #
 # 1. Install oh-my-zsh (via Homebrew)
-# 2. Install Pure prompt (https://github.com/sindresorhus/pure)
-# 3. Install oh-my-zsh plugins:
-#    * https://github.com/zsh-users/zsh-syntax-highlighting
-#    * https://github.com/zsh-users/zsh-autosuggestions
+# 2. Install plugins in ~/.oh-my-zsh/custom/plugins:
+#     - https://github.com/sindresorhus/pure
+#     - https://github.com/zsh-users/zsh-syntax-highlighting
+#     - https://github.com/zsh-users/zsh-autosuggestions
 #######################################
 
 #######################################
