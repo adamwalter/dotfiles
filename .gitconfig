@@ -64,7 +64,6 @@
     excludesfile = ~/.gitignore_global
     filemode = false
     ignorecase = true
-    pager = diff-highlight | diff-so-fancy | less -r
 
 [diff]
 	tool = bc3
