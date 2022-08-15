@@ -228,7 +228,7 @@ alias ln="ln -i"
 alias l.='ls -ld .*'
 
 # Edit file shortcuts
-alias edithosts="sudo edit /private/etc/hosts"
+alias edithosts="sudo code /private/etc/hosts"
 alias editssh="edit ~/.ssh/config"
 alias editknown="edit ~/.ssh/known_hosts"
 alias editbash="edit ~/.zshrc"
