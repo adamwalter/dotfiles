@@ -76,10 +76,10 @@ function cleandir () {
 #  DNS lookup
 function dns () {
     if [ -z "$1" ]; then
-        echo "Usage: dns <ip address>"
+        echo "Usage: dns <hostname>"
     else
-        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
-        dig -t ANY $url
+        local name=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
+        dig $name SOA +noall +answer;dig $name NS +noall +answer;dig $name A +noall +answer;dig $name CNAME +noall +answer;dig $name MX +noall +answer;dig $name TXT +noall +answer;
     fi
 }
 
@@ -99,16 +99,6 @@ function mcd () {
     else
         mkdir -p $1
         cd $1
-    fi
-}
-
-# MX lookup
-function mx () {
-    if [ -z "$1" ]; then
-        echo "Usage: mx <hostname>"
-    else
-        local url=$(echo "$1" | sed 's|\/\/||' | sed 's|\/||' | sed 's|:||' | sed 's|https||' | sed 's|http||' | sed 's|www.||')
-        dig mx +short $url
     fi
 }
 
